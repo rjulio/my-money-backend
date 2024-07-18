@@ -51,7 +51,7 @@ const signup = (req, res, next) => {
 	}
 
 	if (!password.match(passwordRegex)) {
-		return send.status(400).send({
+		return res.status(400).send({
 			errors: [
 				'Senha precisa ter: letra maiuscula, letra minuscula, numero e caracter especial e entre 6 e 20 carateres'
 			]
@@ -76,7 +76,7 @@ const signup = (req, res, next) => {
 				if (err) {
 					return sendErrorsFromDB(res, err);
 				} else {
-					login(req, res, next)
+					login(req, res, next);
 				}
 			})
 		}
